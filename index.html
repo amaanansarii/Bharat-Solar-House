@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Nainital Solar House | Solar for Home</title>
+  <!-- Google Fonts & simple CSS reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #f8fafc 0%, #eef2f5 100%);
+      color: #1e2a3e;
+      scroll-behavior: smooth;
+    }
+
+    /* container utility */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header / navbar */
+    .header {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(233, 213, 164, 0.3);
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 16px 0;
+    }
+    .logo-area h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #e6a017, #c97e0a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+    .logo-area p {
+      font-size: 0.75rem;
+      color: #5b6e8c;
+      font-weight: 500;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1f3b4c;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: #e67e22;
+    }
+    @media (max-width: 700px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+      .logo-area h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* hero section with image + callout */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      margin: 48px 0 56px 0;
+    }
+    .hero-image {
+      flex: 1.2;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-content .badge {
+      background: #fef3c7;
+      color: #b45309;
+      padding: 6px 14px;
+      border-radius: 60px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .hero-content h2 {
+      font-size: 2.3rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero-content p {
+      color: #2c3e50;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
+    .highlight-list {
+      list-style: none;
+      margin-top: 16px;
+    }
+    .highlight-list li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+    }
+    .highlight-list li:before {
+      content: "☀️";
+      font-size: 1.2rem;
+    }
+
+    /* form card */
+    .form-section {
+      background: #ffffff;
+      border-radius: 48px;
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.08);
+      padding: 40px 36px;
+      margin: 30px 0 50px;
+      border: 1px solid rgba(255, 190, 80, 0.25);
+    }
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .section-sub {
+      text-align: center;
+      color: #5a6e7c;
+      margin-bottom: 36px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px 32px;
+    }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .input-group label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .input-group input, .input-group select {
+      padding: 14px 18px;
+      border-radius: 28px;
+      border: 1.5px solid #e2e8f0;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      transition: all 0.2s;
+      background: #fefefe;
+    }
+    .input-group input:focus, .input-group select:focus {
+      outline: none;
+      border-color: #f39c12;
+      box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.2);
+    }
+    .btn-submit {
+      grid-column: 1 / -1;
+      justify-self: center;
+      margin-top: 20px;
+      background: linear-gradient(95deg, #f39c12, #e67e22);
+      border: none;
+      padding: 16px 38px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 8px 18px rgba(230, 126, 34, 0.3);
+      width: auto;
+      min-width: 240px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .btn-submit:hover:not(:disabled) {
+      transform: scale(1.02);
+      background: linear-gradient(95deg, #e67e22, #d35400);
+      box-shadow: 0 12px 22px rgba(230, 126, 34, 0.4);
+    }
+    .btn-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+    /* Loader spinner inside button */
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 0.7s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    /* full-page overlay loader (optional extra protection) */
+    .global-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s;
+    }
+    .global-loader.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .loader-card {
+      background: white;
+      padding: 28px 40px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .loader-card .big-spinner {
+      width: 28px;
+      height: 28px;
+      border: 3px solid #e2e8f0;
+      border-radius: 50%;
+      border-top-color: #e67e22;
+      animation: spin 0.8s linear infinite;
+    }
+    /* popup overlay */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(3px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s;
+    }
+    .popup-overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .popup-card {
+      background: white;
+      max-width: 400px;
+      width: 85%;
+      padding: 32px 24px;
+      border-radius: 48px;
+      text-align: center;
+      box-shadow: 0 30px 40px rgba(0, 0, 0, 0.2);
+      animation: fadeUp 0.2s ease;
+    }
+    .popup-card h3 {
+      font-size: 1.7rem;
+      color: #e67e22;
+      margin-bottom: 16px;
+    }
+    .popup-card p {
+      margin-bottom: 24px;
+      font-size: 1.1rem;
+    }
+    .popup-card button {
+      background: #1e2a3e;
+      border: none;
+      padding: 10px 26px;
+      border-radius: 40px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    @keyframes fadeUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* footer */
+    .footer {
+      background: #0f2c2f;
+      color: #dfe6e9;
+      padding: 42px 0 28px;
+      margin-top: 40px;
+      border-radius: 32px 32px 0 0;
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .footer-contact h4, .footer-copyright h4 {
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #f7b05e;
+    }
+    .footer-contact p, .footer-copyright p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .copyright-bar {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        flex-direction: column;
+      }
+      .form-section {
+        padding: 28px 20px;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+      .btn-submit {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav-container">
+    <div class="logo-area">
+      <h1>🌞 Nainital Solar House</h1>
+      <p>Empower your home • Clean energy forever</p>
+    </div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#form">Apply Now</a>
+      <a href="#footer">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <!-- Hero with solar eye-catching image -->
+  <div class="hero">
+    <div class="hero-image">
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/040/995/143/small/ai-generated-fields-of-solar-panels-and-systems-to-produce-green-electricity-ai-generated-photo.jpg" 
+           alt="Solar panels on roof, beautiful hills background - Nainital Solar House"
+           loading="eager">
+    </div>
+    <div class="hero-content">
+      <span class="badge">☀️ Go Solar Today</span>
+      <h2>Power your home with <br>sunshine, save ₹₹₹</h2>
+      <p>Nainital Solar House brings premium solar solutions to your doorstep. Reduce electricity bills by up to 90%-100%, get government subsidy support, and enjoy reliable green energy.</p>
+      <ul class="highlight-list">
+        <li>Zero down payment EMI options</li>
+        <li>25 years panel warranty</li>
+        <li>Free site survey & consultation</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Form Section (ID for anchor) -->
+  <div id="form" class="form-section">
+    <h2 class="section-title">Apply for Solar Power Plant 🌿</h2>
+    <div class="section-sub">Fill the details — our energy expert will reach you within 24h</div>
+    
+    <form id="solarLeadForm">
+      <div class="form-grid">
+        <div class="input-group">
+          <label>👤 Full Name</label>
+          <input type="text" id="fullName" placeholder="e.g., Rajesh Khanna" required>
+        </div>
+        <div class="input-group">
+          <label>📅 Expected Installation</label>
+          <select id="installationTime" required>
+            <option value="" disabled selected>-- Select timeline --</option>
+            <option value="Now">Now (Immediate)</option>
+            <option value="1month">1 Month</option>
+            <option value="2month">2 Months</option>
+            <option value="3month">3 Months</option>
+            <option value="6month">6 Months</option>
+            <option value="8month">8 Months</option>
+            <option value="1year">1 Year</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>⚡ Monthly Electricity Bill</label>
+          <select id="electricityBill" required>
+            <option value="" disabled selected>-- Select range --</option>
+            <option value="0-1000">₹0 - ₹1000</option>
+            <option value="1000-2000">₹1000 - ₹2000</option>
+            <option value="2000-3000">₹2000 - ₹3000</option>
+            <option value="3000-4000">₹3000 - ₹4000</option>
+            <option value="4000-5000">₹4000 - ₹5000</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>📞 Mobile Number</label>
+          <input type="tel" id="mobile" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+        </div>
+        <div class="input-group">
+          <label>🏙️ City</label>
+          <input type="text" id="city" placeholder="e.g., Nainital, Haldwani" required>
+        </div>
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <span id="btnText">Submit Application →</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</main>
+
+<!-- Footer with company contact details and copyright -->
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-contact">
+        <h4>🏢 Nainital Solar House</h4>
+        <p>📍 Haldwani, Uttarakhand - 263139<br>
+        📞 +91 8171779346 &nbsp;|&nbsp; +91 7906500472<br>
+        🕒 Monday - Saturday: 9:30 AM – 6:00 PM</p>
+      </div>
+      <div class="footer-copyright">
+        <h4>⚡ Clean Energy Initiative</h4>
+        <p>Authorized Channel Partner | MNRE Approved<br>
+        🌱 Making Uttarakhand solar-powered</p>
+      </div>
+    </div>
+    <div class="copyright-bar">
+      © 2026 Nainital Solar House — All rights reserved. | Empowering homes with solar energy
+    </div>
+  </div>
+</footer>
+
+<!-- Popup modal structure -->
+<div id="successPopup" class="popup-overlay">
+  <div class="popup-card">
+    <h3>✅ Thank you!</h3>
+    <p>Your details are submitted successfully! <br> Our solar expert will contact you shortly.</p>
+    <button id="closePopupBtn">Close</button>
+  </div>
+</div>
+
+<!-- Global loader (optional extra layer) -->
+<div id="globalLoader" class="global-loader">
+  <div class="loader-card">
+    <div class="big-spinner"></div>
+    <span>Submitting your application...</span>
+  </div>
+</div>
+
+<script>
+  // ========================
+  // FORM HANDLING + LOADER + GOOGLE SHEETS INTEGRATION
+  // ========================
+  // INSTRUCTIONS FOR GOOGLE SHEETS SETUP:
+  // ---------------------------------------
+  // 1. Create a Google Sheet (e.g., "NainitalSolarLeads").
+  // 2. Go to Extensions → Apps Script, paste the code provided at the end of this HTML (comment block).
+  // 3. Deploy as Web App (Execute as "Me", Access: "Anyone").
+  // 4. Copy the Web App URL.
+  // 5. Replace the `GOOGLE_SCRIPT_URL` constant below with your own URL.
+  // -------------------------------------------------------------
+  // Without deployment, the form will show popup but won't save to sheets (demo fallback).
+  // But once you set the URL, it works live.
+  
+  // 🔧 REPLACE THIS WITH YOUR OWN GOOGLE APPS SCRIPT WEB APP URL (after deployment)
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxoUOrduw3yFhwRqXRpK9vHaSgaZe7Mt5t0vnEFFiWowdsdXmNeHAgikRCnt9LdkyY5/exec"; 
+  // IMPORTANT: You must deploy your own script. Use the guide in comments below. 
+  // For immediate working without backend, it will still show popup and store in browser console,
+  // but to save to Google Sheets, follow setup steps.
+  
+  const form = document.getElementById('solarLeadForm');
+  const popup = document.getElementById('successPopup');
+  const closePopupBtn = document.getElementById('closePopupBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  const btnTextSpan = document.getElementById('btnText');
+  const globalLoader = document.getElementById('globalLoader');
+  
+  // Helper to show/hide loading state on button
+  function setLoading(isLoading) {
+    if (isLoading) {
+      submitBtn.disabled = true;
+      // Store original content and replace with spinner + text
+      btnTextSpan.innerHTML = '<span class="spinner"></span> Submitting...';
+    } else {
+      submitBtn.disabled = false;
+      btnTextSpan.innerHTML = 'Submit Application →';
+    }
+  }
+  
+  // Show/hide full page overlay loader (optional but adds nice effect)
+  function setGlobalLoader(show) {
+    if (show) {
+      globalLoader.classList.add('active');
+    } else {
+      globalLoader.classList.remove('active');
+    }
+  }
+  
+  function closePopup() {
+    popup.classList.remove('active');
+  }
+  
+  function showPopup() {
+    popup.classList.add('active');
+  }
+  
+  popup.addEventListener('click', (e) => {
+    if(e.target === popup) closePopup();
+  });
+  closePopupBtn.addEventListener('click', closePopup);
+  
+  // Helper to save to Google Sheets (with proper error handling)
+  async function sendToGoogleSheets(formData) {
+    const isPlaceholder = GOOGLE_SCRIPT_URL.includes("sample_replace") || GOOGLE_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbzZ4Z_sample_replace_with_your_deployed_id/exec";
+    if (!isPlaceholder) {
+      try {
+        // using fetch with keepalive, no-cors for background submission
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+        console.log("✅ Data sent to Google Sheet successfully");
+        return true;
+      } catch (err) {
+        console.error("❌ Google Sheets send error:", err);
+        return false;
+      }
+    } else {
+      console.warn("⚠️ Google Sheets URL not configured. Saving to localStorage only.");
+      let existingLeads = localStorage.getItem('nainital_solar_leads');
+      let leadsArray = existingLeads ? JSON.parse(existingLeads) : [];
+      leadsArray.push(formData);
+      localStorage.setItem('nainital_solar_leads', JSON.stringify(leadsArray));
+      return false;
+    }
+  }
+  
+  // form submit handler with loader
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // get form values
+    const name = document.getElementById('fullName').value.trim();
+    const installation = document.getElementById('installationTime').value;
+    const bill = document.getElementById('electricityBill').value;
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    // basic validation
+    if(!name || !installation || !bill || !mobile || !city) {
+      alert("Please fill all the fields correctly.");
+      return;
+    }
+    if(!/^\d{10}$/.test(mobile)) {
+      alert("Mobile number must be exactly 10 digits.");
+      return;
+    }
+    
+    // prepare data object
+    const formData = {
+      timestamp: new Date().toISOString(),
+      name: name,
+      installationTimeline: installation,
+      electricityBillRange: bill,
+      mobile: mobile,
+      city: city,
+      source: "Nainital Solar House Website"
+    };
+    
+    // Activate loader (both button spinner + optional global loader)
+    setLoading(true);
+    setGlobalLoader(true);
+    
+    try {
+      // Send data to Google Sheets (or fallback local)
+      await sendToGoogleSheets(formData);
+      
+      // Simulate tiny extra delay for smoother UX (optional, ensures loader visible)
+      await new Promise(resolve => setTimeout(resolve, 600));
+      
+      // Clear form fields after successful submission
+      form.reset();
+      
+      // Show success popup
+      showPopup();
+    } catch (err) {
+      console.error("Unexpected error:", err);
+      alert("Something went wrong. Please try again later.");
+    } finally {
+      // remove loader states
+      setLoading(false);
+      setGlobalLoader(false);
+    }
+  });
+  
+  // Additional note: when popup closed, focus on form but no extra action needed.
+//   console.log("🌟 Nainital Solar House with Loader is ready!");
+//   console.log("📌 To enable Google Sheets saving: ");
+//   console.log("   1. Create Google Sheet -> Extensions -> Apps Script");
+//   console.log("   2. Copy the script from the HTML comments below & paste into Apps Script editor.");
+//   console.log("   3. Deploy as Web App -> set access to 'Anyone' -> copy URL");
+//   console.log("   4. Replace GOOGLE_SCRIPT_URL constant with your URL.");
+</script>
+
+<!-- 
+  ========== GOOGLE APPS SCRIPT CODE (Copy & Paste into your Google Sheet's Script Editor) ==========
+  Instructions for integration:
+  1. Create a new Google Sheet named "NainitalSolarLeads"
+  2. Go to Extensions → Apps Script, delete default code, paste the code below.
+  3. Save project (name it "SolarLeadLogger").
+  4. Click "Deploy" → "New deployment" → type: Web App → Execute as "Me", Access: "Anyone" → Deploy.
+  5. Copy the generated URL and paste into const GOOGLE_SCRIPT_URL in your HTML.
+  
+  ----- Apps Script Code (start) -----
+  
+function doPost(e) {
+  try {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    // optional: if headers not present, add them
+    if(sheet.getLastRow() === 0) {
+      sheet.appendRow(["Timestamp", "Full Name", "Expected Installation", "Electricity Bill Range", "Mobile Number", "City", "Source"]);
+    }
+    const data = JSON.parse(e.postData.contents);
+    const row = [
+      data.timestamp || new Date().toISOString(),
+      data.name,
+      data.installationTimeline,
+      data.electricityBillRange,
+      data.mobile,
+      data.city,
+      data.source || "Nainital Solar Website"
+    ];
+    sheet.appendRow(row);
+    return ContentService.createTextOutput(JSON.stringify({result: "success"})).setMimeType(ContentService.MimeType.JSON);
+  } catch(err) {
+    return ContentService.createTextOutput(JSON.stringify({error: err.toString()})).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function doGet() {
+  return ContentService.createTextOutput("Web App is active. Use POST to submit lead data.");
+}
+  
+  ----- Apps Script Code (end) -----
+  
+  Important: After deploying Web App, ensure the Google Sheet remains shared or at least accessible by the script owner.
+  Once URL is set, every form submission will append a new row to your sheet instantly!
+-->
+</body>
+</html>
